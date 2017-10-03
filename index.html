@@ -1,27 +1,72 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Twittler</title>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="timeago.js" type="text/javascript"></script>
   </head>
   <body>
+
+    <div class="main">Twittler Feed</div>
+
+    <div class = "currentView">Main Feed</div>
+
+    <div><button class="refreshButton">Check for New Tweets</button></div>
+
+    <div class="twittlerFeed"></div>
+
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        //var $body = $('body');
+        //$body.html('');
+
+        var displayTweets = function(tweets) {
+          var $twittlerFeed = $('.twittlerFeed');
+          $twittlerFeed.html('');
+
+          var index = tweets.length - 1;
+          while(index >= 0){
+            var tweet = tweets[index];
+            var $tweet = $('<div class = "tweet">' + '<span class = "user">' + '@' + tweet.user + '</span>' + '<span class = "message">' + ': ' + tweet.message + '<span class = "timestamp">' + ' ' + tweet.created_at + '</span></div>');
+            $tweet.appendTo($twittlerFeed);
+
+            index -= 1;
+          }
+        };
+
+        var refreshFeed = function() {
+          $('.currentView').text('Main Feed');
+          $('.refreshButton').text('Check for New Tweets');
+          displayTweets(streams.home);
+        };
+
+        var displayUserFeed = function(user) {
+          $('.currentView').text(user + '\'s tweets');
+          $('.refreshButton').text('Return to Main Twittler Feed');
+          displayTweets(streams.users[user]);    
+        };
+
+        var displayTimestamp = function() {
+          $('.timestamp').slideToggle('hello');
         }
+
+        displayTweets(streams.home);
+
+        $('.refreshButton').on('click', refreshFeed);
+
+        $('.twittlerFeed').on('click', '.user', function(event) {
+          var user = $(this).text().slice(1);
+          displayUserFeed(user);
+        });
+
+        $('.twittlerFeed').on('click', '.timestamp', displayTimestamp);
 
       });
 
     </script>
+
   </body>
 </html>
