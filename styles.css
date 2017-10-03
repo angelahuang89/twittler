@@ -1,0 +1,78 @@
+body {
+    background: #e7f2fa;
+    background: linear-gradient(to right, #e7f2fa, #1178e7);
+    color: #094d83;
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+.main {
+    font-size: 50px;
+    letter-spacing: 1.5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.main:hover {
+	color: #1d53e5;
+	cursor: pointer;
+}
+
+.currentView {
+	font-size: 30px;
+	margin: 10px;
+
+}
+
+.refreshButton{
+	background-color: #62a9de;
+    border-radius: 5px;
+    border: 1px solid #4279a2;
+    color: #3b649c;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 8px;
+    letter-spacing: 1.5px;
+    margin: 10px;
+}
+
+.refreshButton:hover {
+	background-color: #95ccec;
+	color: #2d9cd8;
+}
+
+.twittlerFeed {
+	margin: 25px;
+}
+
+.twittlerFeed .tweet {
+	line-height: 2;
+}
+
+.twittlerFeed .user {
+	color: blue;
+}
+
+.twittlerFeed .user:hover {
+	color: #261352;
+	cursor: pointer;
+}
+
+.twittlerFeed .message {
+	display: inline-block;
+}
+
+.twittlerFeed .timestamp {
+	font-style: italic;
+}
+
+.twittlerFeed .timestamp:hover {
+	color: #1d53e5;
+	cursor: pointer;
+	font-style: normal;
+	text-decoration: underline;
+}
