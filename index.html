@@ -10,9 +10,9 @@
 
     <div class="main">Twittler Feed</div>
 
-    <div class = "currentView">Main Feed</div>
+    <div class = "currentView">all tweets</div>
 
-    <div><button class="refreshButton">Check for New Tweets</button></div>
+    <div><button class="refreshButton">check for new tweets</button></div>
 
     <div class="twittlerFeed"></div>
 
@@ -38,14 +38,14 @@
         };
 
         var refreshFeed = function() {
-          $('.currentView').text('Main Feed');
-          $('.refreshButton').text('Check for New Tweets');
+          $('.currentView').text('all tweets');
+          $('.refreshButton').text('check for new tweets');
           displayTweets(streams.home);
         };
 
         var displayUserFeed = function(user) {
           $('.currentView').text(user + '\'s tweets');
-          $('.refreshButton').text('Return to Main Feed');
+          $('.refreshButton').text('return to main feed');
           displayTweets(streams.users[user]);    
         };
 
@@ -54,6 +54,10 @@
         // }
 
         displayTweets(streams.home);
+
+        setInterval(function() {
+          displayTweets(streams.home)
+        }, 4000);
 
         $('.refreshButton').on('click', refreshFeed);
 
