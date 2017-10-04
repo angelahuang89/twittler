@@ -10,7 +10,7 @@
 
     <div class="main">Twittler Feed</div>
 
-    <div class = "currentView">all tweets</div>
+    <div class="currentView">all tweets</div>
 
     <div><button class="refreshButton">check for new tweets</button></div>
 
@@ -49,26 +49,16 @@
           displayTweets(streams.users[user]);    
         };
 
-        // var displayTimestamp = function() {
-        //   $('.timestamp').slideToggle('hello');
-        // }
-
         displayTweets(streams.home);
-
-        setInterval(function() {
-          displayTweets(streams.home)
-        }, 4000);
 
         $('.refreshButton').on('click', refreshFeed);
 
         $('.main').on('click', refreshFeed);
 
         $('.twittlerFeed').on('click', '.user', function(event) {
-          //var user = $(this).text().slice(1);
-          displayUserFeed($(this).text().slice(1));
+          var username = $(this).text().slice(1);
+          displayUserFeed(username);
         });
-
-        // $('.twittlerFeed').on('click', '.timestamp', displayTimestamp);
 
       });
 
