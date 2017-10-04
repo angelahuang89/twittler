@@ -8,11 +8,11 @@
   </head>
   <body>
 
-    <div class="main">Twittler Feed</div>
+    <div id="main">Twittler Feed</div>
 
-    <div class="currentView">all tweets</div>
+    <div id="currentView">all tweets</div>
 
-    <div><button class="refreshButton">check for new tweets</button></div>
+    <div><button id="refreshButton">check for new tweets</button></div>
 
     <div class="twittlerFeed"></div>
 
@@ -23,7 +23,7 @@
         //var $body = $('body');
         //$body.html('');
 
-        var displayTweets = function(tweets) {
+        var displayFeed = function(tweets) {
           var $twittlerFeed = $('.twittlerFeed');
           $twittlerFeed.html('');
 
@@ -38,22 +38,22 @@
         };
 
         var refreshFeed = function() {
-          $('.currentView').text('all tweets');
-          $('.refreshButton').text('check for new tweets');
-          displayTweets(streams.home);
+          $('#currentView').text('all tweets');
+          $('#refreshButton').text('check for new tweets');
+          displayFeed(streams.home);
         };
 
         var displayUserFeed = function(user) {
-          $('.currentView').text(user + '\'s tweets');
-          $('.refreshButton').text('return to main feed');
-          displayTweets(streams.users[user]);    
+          $('#currentView').text(user + '\'s tweets');
+          $('#refreshButton').text('return to main feed');
+          displayFeed(streams.users[user]);    
         };
 
-        displayTweets(streams.home);
+        displayFeed(streams.home);
 
-        $('.refreshButton').on('click', refreshFeed);
+        $('#refreshButton').on('click', refreshFeed);
 
-        $('.main').on('click', refreshFeed);
+        $('#main').on('click', refreshFeed);
 
         $('.twittlerFeed').on('click', '.user', function(event) {
           var username = $(this).text().slice(1);
